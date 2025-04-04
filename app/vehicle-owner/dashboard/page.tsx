@@ -1,7 +1,5 @@
-        </div>
-      </div>
+            <div className="text-2xl font-bold">15.5 L</div>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+          </CardFooter>
           </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">1</div>
-            <p className="text-xs text-slate-500">Toyota Corolla (ABC-1234)</p>
-          </CardContent>
+          <CardFooter>
