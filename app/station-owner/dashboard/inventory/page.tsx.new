@@ -1,0 +1,4 @@
+                          <SelectItem value="Super Diesel">Super Diesel</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
