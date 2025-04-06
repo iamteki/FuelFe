@@ -1,12 +1,5 @@
+    className={cn(
       className
+  React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Action>
+      buttonVariants({ variant: "outline" }),
     )}
-    {...props}
-
-const AlertDialogTrigger = AlertDialogPrimitive.Trigger
-
-const AlertDialogPortal = AlertDialogPrimitive.Portal
-  AlertDialogTrigger,
-  AlertDialogContent,
-  AlertDialogHeader,
-  AlertDialogFooter,
-  AlertDialogTitle,
