@@ -1,2 +1,3 @@
       className
     )}
+    {...props}
