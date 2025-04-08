@@ -1,0 +1,2 @@
+  const { toggleSidebar } = useSidebar()
+      {...props}
