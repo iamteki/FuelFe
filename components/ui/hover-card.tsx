@@ -1,1 +1,4 @@
-const HoverCardContent = React.forwardRef<
+"use client"
+const HoverCard = HoverCardPrimitive.Root
+    sideOffset={sideOffset}
+  />
