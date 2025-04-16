@@ -6,3 +6,5 @@ const navItems = [
     title: "Dashboard",
     href: "/station-owner/dashboard",
     icon: Home,
+      {children}
+    </DashboardLayout>
