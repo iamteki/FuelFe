@@ -8,3 +8,8 @@ const navItems = [
     icon: Home,
       {children}
     </DashboardLayout>
+import { DashboardLayout } from "@/components/layouts/dashboard-layout"
+
+const navItems = [
+  {
+    title: "Dashboard",
