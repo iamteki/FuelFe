@@ -1,9 +1,5 @@
-    <span
-      className={cn(
-        "ml-auto text-xs tracking-widest text-muted-foreground",
-        className
-  />
-))
-
-CommandEmpty.displayName = CommandPrimitive.Empty.displayName
+const Command = React.forwardRef<
+  <div className="flex items-center border-b px-3" cmdk-input-wrapper="">
+  </div>
+    {...props}
 
