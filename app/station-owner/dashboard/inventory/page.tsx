@@ -8,3 +8,4 @@
 
         <TabsContent value="all" className="mt-4">
           <div className="grid gap-6 md:grid-cols-2">
+          <TabsTrigger value="diesel">Diesel</TabsTrigger>
