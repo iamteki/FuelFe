@@ -6,3 +6,6 @@ export const metadata: Metadata = {
   description: "National Fuel Crisis Management Solution",
 }
 
+import type React from "react"
+import type { Metadata } from "next"
+import { Inter } from "next/font/google"
