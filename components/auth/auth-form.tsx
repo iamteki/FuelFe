@@ -1,4 +1,4 @@
-                  <FormLabel>Email</FormLabel>
-                  <FormControl>
-                    <Input placeholder="email@example.com" {...field} />
-                  </FormControl>
+
+    try {
+        title: "Registration successful",
+          </form>
