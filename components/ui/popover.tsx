@@ -1,14 +1,5 @@
-  </PopoverPrimitive.Portal>
-))
-PopoverContent.displayName = PopoverPrimitive.Content.displayName
-
-import { cn } from "@/lib/utils"
-
-const Popover = PopoverPrimitive.Root
-
+import * as React from "react"
 const PopoverTrigger = PopoverPrimitive.Trigger
-      )}
-      {...props}
-    />
-  </PopoverPrimitive.Portal>
-))
+
+      ref={ref}
+PopoverContent.displayName = PopoverPrimitive.Content.displayName
