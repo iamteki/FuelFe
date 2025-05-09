@@ -1,5 +1,5 @@
-        "h-2.5 flex-col border-t border-t-transparent p-[1px]",
-))
-ScrollBar.displayName = ScrollAreaPrimitive.ScrollAreaScrollbar.displayName
 
+    <ScrollAreaPrimitive.Viewport className="h-full w-full rounded-[inherit]">
+))
+      orientation === "vertical" &&
 export { ScrollArea, ScrollBar }
