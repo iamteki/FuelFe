@@ -1,9 +1,2 @@
-          <TabsTrigger value="active">Active Vehicles</TabsTrigger>
-          <TabsTrigger value="pending">Register New Vehicle</TabsTrigger>
-        </TabsList>
-        <TabsContent value="active" className="mt-6">
-                    name="licensePlate"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>License Plate</FormLabel>
-                        <FormControl>
+      make: "",
+              <DialogTitle>Register New Vehicle</DialogTitle>
