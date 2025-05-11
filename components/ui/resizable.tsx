@@ -4,3 +4,7 @@
       className
     )}
     {...props}
+import * as ResizablePrimitive from "react-resizable-panels"
+
+import { cn } from "@/lib/utils"
+
