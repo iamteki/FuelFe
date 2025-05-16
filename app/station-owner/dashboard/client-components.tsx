@@ -5,3 +5,4 @@
               value={15}
               className="h-2"
               indicatorClassName="bg-red-500"
+          <CardContent>
