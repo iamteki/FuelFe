@@ -1,3 +1,2 @@
->(({ className, ...props }, ref) => {
   return (
-    <textarea
+      className={cn(
