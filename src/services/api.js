@@ -109,6 +109,59 @@ class ApiService {
   }
 
   /**
+   * QR code scanning endpoint
+   * Matches MobileApiController.scanQRCode()
+   */
+  async scanQR(qrCode) {
+    try {
+      const response = await this.api.post(`/scan-qr`, null, {
+        params: { qrCode },
+      });
+      return response;
+    } catch (error) {
+      console.error("Scan QR error:", error);
+      throw error;
+    }
+  }
+
+  /**
+   * Get vehicle quota details
+   * Matches MobileApiController.getVehicleQuota()
+   */
+  async getVehicleQuota(vehicleId) {
+    try {
+      const response = await this.api.get(`/vehicle/${vehicleId}/quota`);
+      return response;
+    } catch (error) {
+      console.error("Get vehicle quota error:", error);
+      throw error;
+    }
+  }
+
+  /**
+   * Pump fuel - main transaction endpoint
+   * Matches MobileApiController.pumpFuel()
+   */
+  async pumpFuel(fuelData) {
+    try {
+      // Ensure we have the correct request format matching backend FuelPumpingRequest
+      const pumpRequest = {
+        vehicleId: fuelData.vehicleId,
+        fuelType: fuelData.fuelType || "PETROL",
+        pumpedLiters: parseFloat(fuelData.pumpedLiters),
+        unitPrice: fuelData.unitPrice || fuelData.fuelPrice || 450.0,
+      };
+
+      console.log("Pump fuel request:", pumpRequest);
+
+      const response = await this.api.post(`/pump-fuel`, pumpRequest);
+      return response;
+    } catch (error) {
+      console.error("Pump fuel error:", error);
+      throw error;
+    }
+  }
+  /**
    * Get operator profile and fuel station details
    * Matches MobileApiController.getOperatorProfile()
    */
