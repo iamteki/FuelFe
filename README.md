@@ -1,52 +1,279 @@
-# Fuel Quota Management System - Backend
+# Fuel Quota Management System
 
-A comprehensive fuel quota management system built with Spring Boot to manage fuel distribution during crisis situations. This system enables vehicle registration, QR code generation, fuel station management, and real-time quota tracking.
+A comprehensive fuel quota management system built with Spring Boot backend and React frontend to manage fuel distribution during crisis situations.
 
-## 🚀 Technology Stack
+## 🚀 Features
 
-- **Framework:** Spring Boot 3.x
-- **Language:** Java 21
-- **Database:** MySQL 8.0
-- **ORM:** Spring Data JPA / Hibernate
-- **Security:** Spring Security + JWT
-- **API Documentation:** Swagger/OpenAPI 3.0
-- **Build Tool:** Maven
-- **IDE:** Apache NetBeans IDE 21
+### Backend (Spring Boot)
+- **User Management**: Registration, authentication with JWT
+- **Vehicle Registration**: QR code generation for vehicles
+- **Quota Management**: Automatic weekly quota calculation and tracking
+- **Fuel Station Management**: Station registration and fuel stock tracking
+- **Transaction Processing**: Real-time fuel transaction management
+- **Security**: Role-based access control (Admin, Station Manager, Vehicle Owner)
+- **API Documentation**: Swagger/OpenAPI 3.0
+
+### Frontend (React + Vite)
+- **Modern UI**: Beautiful and responsive design with Tailwind CSS
+- **Dashboard**: Real-time quota status and activity tracking
+- **Vehicle Management**: Register and manage multiple vehicles
+- **Station Locator**: Find nearby fuel stations
+- **Transaction History**: View fuel purchase history
+- **Role-based Access**: Different interfaces for different user roles
+
+## �️ Technology Stack
+
+### Backend
+- **Framework**: Spring Boot 3.x
+- **Language**: Java 21
+- **Database**: MySQL 8.0
+- **ORM**: Spring Data JPA / Hibernate
+- **Security**: Spring Security + JWT
+- **API Documentation**: Swagger/OpenAPI 3.0
+- **Build Tool**: Maven
+
+### Frontend
+- **Framework**: React 18
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **State Management**: React Query
+- **Forms**: React Hook Form
+- **Routing**: React Router DOM
+- **Notifications**: React Hot Toast
 
 ## 📋 Prerequisites
 
-- JDK 21 or higher
-- MySQL 8.0 or higher
-- Maven 3.6+
-- Apache NetBeans IDE 21 (recommended)
-- Git
+- **JDK 21** or higher
+- **Node.js 16** or higher
+- **MySQL 8.0** or higher
+- **Maven 3.6+**
+- **Git**
 
-## 🛠️ Project Setup
+## 🚀 Quick Start
 
 ### 1. Clone the Repository
-
 ```bash
 git clone <repository-url>
-cd fuel-quota-backend
+cd FuelFe
 ```
 
 ### 2. Database Setup
-
-Create two databases for the main application and mock DMT service:
-
+1. Start MySQL server
+2. Create the database:
 ```sql
--- Create main database
-CREATE DATABASE IF NOT EXISTS fuel_quota_db;
-
--- Create mock DMT database
-CREATE DATABASE IF NOT EXISTS motor_traffic_db;
+CREATE DATABASE fuel_quota_db;
+```
+3. Run the SQL script:
+```bash
+mysql -u root -p fuel_quota_db < database.sql
 ```
 
-Run the SQL scripts from `databases.txt` to create all required tables.
+### 3. Backend Setup
+```bash
+cd backend
+# Update application.properties with your MySQL credentials
+mvn clean install
+mvn spring-boot:run
+```
 
-### 3. Configure Application Properties
+### 4. Frontend Setup
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-Update `src/main/resources/application.properties`:
+### 5. Automated Setup (Windows)
+Simply run the batch file:
+```bash
+run-system.bat
+```
+
+## 🌐 Access Points
+
+- **Frontend**: http://localhost:3000
+- **Backend API**: http://localhost:8080/api
+- **Swagger UI**: http://localhost:8080/swagger-ui.html
+
+## � Default Accounts
+
+### Admin Account
+- **Username**: admin
+- **Password**: password
+
+### Vehicle Owner Account
+- **Username**: johndoe  
+- **Password**: password
+
+## 📱 Usage Guide
+
+### Vehicle Owner
+1. **Register**: Create an account
+2. **Add Vehicle**: Register your vehicle with details
+3. **View Quota**: Check remaining fuel quota
+4. **Find Stations**: Locate nearby fuel stations
+5. **Track Usage**: Monitor fuel consumption history
+
+### Fuel Station Manager
+1. **Login**: Use station manager credentials
+2. **Scan QR**: Scan vehicle QR codes
+3. **Process Fuel**: Record fuel transactions
+4. **Manage Stock**: Update fuel inventory
+
+### Admin
+1. **Dashboard**: Monitor system-wide statistics
+2. **User Management**: Manage all user accounts
+3. **Station Management**: Add/edit fuel stations
+4. **Quota Settings**: Configure quota rules
+5. **Reports**: Generate system reports
+
+## 🔧 Configuration
+
+### Backend Configuration (application.properties)
+```properties
+# Database
+spring.datasource.url=jdbc:mysql://localhost:3306/fuel_quota_db
+spring.datasource.username=root
+spring.datasource.password=your_password
+
+# JWT
+jwt.secret=your_secret_key
+jwt.expiration=86400000
+
+# Server
+server.port=8080
+```
+
+### Frontend Configuration (.env)
+```env
+VITE_API_URL=http://localhost:8080/api
+```
+
+## 🏗️ Architecture
+
+### Backend Architecture
+```
+src/
+├── main/java/com/fuelquota/
+│   ├── entity/          # JPA Entities
+│   ├── repository/      # Data Access Layer
+│   ├── service/         # Business Logic
+│   ├── controller/      # REST Controllers
+│   ├── dto/            # Data Transfer Objects
+│   ├── security/       # Security Configuration
+│   └── config/         # Application Configuration
+```
+
+### Frontend Architecture
+```
+src/
+├── components/         # Reusable UI Components
+├── pages/             # Page Components
+├── contexts/          # React Contexts
+├── services/          # API Services
+├── utils/            # Utility Functions
+└── assets/           # Static Assets
+```
+
+## 🔒 Security Features
+
+- **JWT Authentication**: Secure token-based authentication
+- **Role-based Access Control**: Different access levels for users
+- **Password Encryption**: BCrypt password hashing
+- **CORS Configuration**: Secure cross-origin requests
+- **Input Validation**: Server-side and client-side validation
+
+## 📊 Quota System
+
+### Quota Calculation
+- **Car**: 20L per week (base)
+- **Motorcycle**: 4L per week
+- **Three Wheeler**: 8L per week
+- **Van**: 30L per week
+- **Lorry**: 50L per week
+- **Bus**: 80L per week
+- **Truck**: 100L per week
+
+*Note: Quotas are adjusted based on engine capacity*
+
+### Quota Reset
+- Weekly automatic reset every Monday
+- Manual reset capability for admins
+- Real-time quota tracking
+
+## 🚨 Crisis Management
+
+- **Real-time Monitoring**: Track fuel distribution across regions
+- **Emergency Allocation**: Quick quota adjustments during shortages
+- **Stock Management**: Monitor fuel station inventory levels
+- **Usage Analytics**: Identify consumption patterns
+
+## 🧪 Testing
+
+### Backend Testing
+```bash
+cd backend
+mvn test
+```
+
+### Frontend Testing
+```bash
+cd frontend
+npm test
+```
+
+## 📚 API Documentation
+
+Once the backend is running, visit http://localhost:8080/swagger-ui.html for interactive API documentation.
+
+### Key Endpoints
+- `POST /auth/signin` - User login
+- `POST /auth/signup` - User registration
+- `POST /vehicles/register` - Register vehicle
+- `GET /vehicles/my-vehicles` - Get user vehicles
+- `GET /stations` - Get fuel stations
+- `POST /transactions` - Create fuel transaction
+
+## 🚀 Deployment
+
+### Backend Deployment
+1. Build JAR file: `mvn clean package`
+2. Deploy to server: `java -jar target/fuel-quota-backend-1.0.0.jar`
+
+### Frontend Deployment
+1. Build for production: `npm run build`
+2. Deploy dist folder to web server
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a Pull Request
+
+## 📝 License
+
+This project is licensed under the MIT License.
+
+## 📞 Support
+
+For support and questions:
+- **Email**: support@fuelquota.com
+- **Documentation**: [Project Wiki]
+- **Issues**: [GitHub Issues]
+
+## 🔄 Version History
+
+- **v1.0.0**: Initial release with core features
+- Vehicle registration and QR code generation
+- Quota management system
+- Basic user authentication
+- Fuel station management
+
+---
+
+**Note**: This system is designed for crisis fuel management scenarios and includes features for quota enforcement, real-time monitoring, and efficient distribution tracking.
 
 ```properties
 # Database Configuration
