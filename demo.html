@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fuel Quota Management System - Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="bg-blue-600 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <h1 class="text-xl font-bold">⛽ Fuel Quota Management System</h1>
+                <nav class="space-x-4">
+                    <button onclick="showPage('login')" class="hover:text-blue-200">Login</button>
+                    <button onclick="showPage('dashboard')" class="hover:text-blue-200">Dashboard</button>
+                    <button onclick="showPage('vehicles')" class="hover:text-blue-200">Vehicles</button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Login Page -->
+    <div id="login" class="page min-h-screen flex items-center justify-center">
+        <div class="bg-white p-8 rounded-lg shadow-md w-96">
+            <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Login to Fuel Quota System</h2>
+            <form>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Username</label>
+                    <input type="text" value="admin" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                    <input type="password" value="admin123" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                </div>
+                <button type="button" onclick="showPage('dashboard')" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-200">
+                    Login
+                </button>
+            </form>
+            <div class="mt-4 text-center">
+                <p class="text-sm text-gray-600">Demo Credentials:</p>
+                <p class="text-xs text-gray-500">admin/admin123 or testuser/test123</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Page -->
+    <div id="dashboard" class="page hidden container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <!-- Stats Cards -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Monthly Quota</h3>
+                <p class="text-3xl font-bold text-blue-600">120L</p>
+                <p class="text-sm text-gray-500">Remaining this month</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Vehicles</h3>
+                <p class="text-3xl font-bold text-green-600">3</p>
+                <p class="text-sm text-gray-500">Registered vehicles</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Last Fill-up</h3>
+                <p class="text-3xl font-bold text-orange-600">45L</p>
+                <p class="text-sm text-gray-500">2 days ago</p>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Quick Actions</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <button onclick="showPage('vehicles')" class="bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-200">
+                    🚗 Register Vehicle
+                </button>
+                <button class="bg-green-600 text-white py-3 px-6 rounded-lg hover:bg-green-700 transition duration-200">
+                    📱 Generate QR Code
+                </button>
+                <button class="bg-purple-600 text-white py-3 px-6 rounded-lg hover:bg-purple-700 transition duration-200">
+                    📊 View History
+                </button>
+            </div>
+        </div>
+
+        <!-- Recent Transactions -->
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Recent Transactions</h3>
+            <div class="space-y-3">
+                <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+                    <div>
+                        <p class="font-medium">Fuel Station A</p>
+                        <p class="text-sm text-gray-500">Aug 16, 2025 - CAR-1234</p>
+                    </div>
+                    <span class="text-green-600 font-bold">30L</span>
+                </div>
+                <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+                    <div>
+                        <p class="font-medium">Fuel Station B</p>
+                        <p class="text-sm text-gray-500">Aug 14, 2025 - BIKE-5678</p>
+                    </div>
+                    <span class="text-green-600 font-bold">15L</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vehicle Registration Page -->
+    <div id="vehicles" class="page hidden container mx-auto px-4 py-8">
+        <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-8">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Register New Vehicle</h2>
+            <form>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Vehicle Number</label>
+                        <input type="text" placeholder="e.g., ABC-1234" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Vehicle Type</label>
+                        <select class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                            <option>Car</option>
+                            <option>Motorcycle</option>
+                            <option>Van</option>
+                            <option>Truck</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Engine Capacity (CC)</label>
+                        <input type="number" placeholder="e.g., 1500" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Fuel Type</label>
+                        <select class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                            <option>Petrol</option>
+                            <option>Diesel</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Owner Name</label>
+                    <input type="text" placeholder="Full name" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                </div>
+                <div class="mt-8">
+                    <button type="button" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-200">
+                        Register Vehicle & Generate QR Code
+                    </button>
+                </div>
+            </form>
+
+            <!-- Sample QR Code -->
+            <div class="mt-8 text-center">
+                <h3 class="text-lg font-semibold mb-4">Sample QR Code</h3>
+                <div class="inline-block p-4 bg-gray-100 rounded-lg">
+                    <div class="w-32 h-32 bg-black bg-opacity-10 flex items-center justify-center">
+                        <span class="text-4xl">📱</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-2">QR Code for Vehicle</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- System Status -->
+    <div class="fixed bottom-4 right-4 bg-white rounded-lg shadow-lg p-4 max-w-sm">
+        <h4 class="font-bold text-gray-800 mb-2">🚀 System Status</h4>
+        <div class="space-y-1 text-sm">
+            <div class="flex justify-between">
+                <span>Backend:</span>
+                <span class="text-red-500">⚠️ Starting...</span>
+            </div>
+            <div class="flex justify-between">
+                <span>Database:</span>
+                <span class="text-yellow-500">🔄 H2 Ready</span>
+            </div>
+            <div class="flex justify-between">
+                <span>Frontend:</span>
+                <span class="text-green-500">✅ Demo Mode</span>
+            </div>
+        </div>
+        <p class="text-xs text-gray-500 mt-2">This is a demo version showing the UI design.</p>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.add('hidden'));
+            
+            // Show selected page
+            document.getElementById(pageId).classList.remove('hidden');
+        }
+
+        // Show login page by default
+        showPage('login');
+    </script>
+</body>
+</html>
